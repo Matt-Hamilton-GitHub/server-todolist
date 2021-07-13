@@ -1,21 +1,25 @@
 const express = require("express");
 const app = express();
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
+
+const toDoList = ['cofee', 'milk', 'eggs']
+
 app.get("/", function(req, res){
-  res.send("<center><h1>Hello</h1></center>");
+  res.send("<center><h1>Todo List API</h1></center>");
 });
 
-app.get("/contact", function(req, res){
-  res.send("<h1>Contact me: +13235782846 </h1>");
-});
 
-app.get("/about", function(req, res1){
-  res1.send("<p>Hello Evryone<br> My name is Matt and I am trying to run my first server!<br> Good Luck to me!")
+
+
+
+app.get('/to-do-list', function(req, res){
+  res.json(toDoList)
 })
 
-app.get("/calculator", function(req, res){
-  res.send("<h1>Calculator</h1>");
-})
+
+
 app.listen(150,function(){
-  console.log("Server started on port 150");
+  console.log("Server runs on port 150");
 });
