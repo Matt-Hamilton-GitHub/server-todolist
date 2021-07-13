@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.6.10",
+    "mongoose": "^5.13.2",
     "node": "^16.4.0",
     "nodemon": "^2.0.12",
     "npm": "^7.19.1",
