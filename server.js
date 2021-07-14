@@ -1,23 +1,17 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser')
+const todoRoutes = require('./routes/todos')
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
-
-const toDoList = ['cofee', 'milk', 'eggs']
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.get("/", function(req, res){
   res.send("<center><h1>Todo List API</h1></center>");
 });
 
 
-
-
-
-app.get('/to-do-list', function(req, res){
-  res.json(toDoList)
-})
-
+app.use('/api/todos', todoRoutes);
 
 
 app.listen(150,function(){
